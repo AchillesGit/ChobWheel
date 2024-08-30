@@ -48,6 +48,7 @@ const props = {
     let x = 12 - ((Math.floor(wheel._rotation / 30) % 12) % 12);
     let y = (x % 12) - 1;
     console.log(food[y].label);
+    alert("Chob: " + food[y].label);
   },
 };
 
@@ -57,11 +58,10 @@ const container = document.querySelector(".wheel-container");
 // 3. Create the wheel in the container and initialise it with the props:
 const wheel = new Wheel(container, props);
 
-async function test() {
+async function spinWheel() {
   const winningItemIndex = Math.floor(Math.random() * food.length);
   const duration = 4000;
   wheel.spinToItem(winningItemIndex, duration, true, 2, 1);
 }
 
-// Add event listener to the button
-document.getElementById("spinButton").addEventListener("click", test);
+document.getElementById("spinButton").addEventListener("click", spinWheel);
