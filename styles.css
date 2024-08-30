@@ -1,13 +1,21 @@
-.stopper {
-  width: 10px;
-  height: 10%;
-  background-color: red;
+.spinBtnContainer::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red;
+  z-index: 1;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #spinButton {
   width: 100px;
   height: 100px;
-  font-size: 30px;
+  font-size: 20px;
   color: #ffffff;
   background: #f38181;
   border: none;
