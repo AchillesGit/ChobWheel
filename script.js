@@ -1,5 +1,7 @@
 import { Wheel } from "https://cdn.jsdelivr.net/npm/spin-wheel@5.0.1/dist/spin-wheel-esm.js";
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 // 1. Configure the wheel's properties:
 const food = [
   { label: "Pommes 🍟" },
@@ -65,3 +67,10 @@ async function spinWheel() {
 }
 
 document.getElementById("spinButton").addEventListener("click", spinWheel);
+
+// only show sea horse on mobile
+console.log(isMobile);
+
+if (!isMobile) {
+  document.getElementById("seaHorse").style.display = "block";
+}

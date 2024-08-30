@@ -28,6 +28,7 @@ body {
 
 #seaHorse {
   animation: upAndDown 2s infinite;
+  display: none;
 }
 
 @keyframes upAndDown {
