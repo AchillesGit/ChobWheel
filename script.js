@@ -1,43 +1,19 @@
 import { Wheel } from "https://cdn.jsdelivr.net/npm/spin-wheel@5.0.1/dist/spin-wheel-esm.js";
-// 1. Configure the wheel's properties:
 
+// 1. Configure the wheel's properties:
 const food = [
-  {
-    label: "Pommes 🍟",
-  },
-  {
-    label: "Döner 🥙",
-  },
-  {
-    label: "Kantine 🍲",
-  },
-  {
-    label: "RiceOn 🍚",
-  },
-  {
-    label: "Kube 🍔",
-  },
-  {
-    label: "Vapiano 🍝",
-  },
-  {
-    label: "L'Osteria 🍕",
-  },
-  {
-    label: "Peter Pane 🍔",
-  },
-  {
-    label: "Fasten ☠️",
-  },
-  {
-    label: "Asia Gourmet 🍜",
-  },
-  {
-    label: "Fresh Seeds 🥗",
-  },
-  {
-    label: "Burrito-Laden 🌯",
-  },
+  { label: "Pommes 🍟" },
+  { label: "Döner 🥙" },
+  { label: "Kantine 🍲" },
+  { label: "RiceOn 🍚" },
+  { label: "Kube 🍔" },
+  { label: "Vapiano 🍝" },
+  { label: "L'Osteria 🍕" },
+  { label: "Peter Pane 🍔" },
+  { label: "Fasten ☠️" },
+  { label: "Asia Gourmet 🍜" },
+  { label: "Fresh Seeds 🥗" },
+  { label: "Burrito-Laden 🌯" },
 ];
 
 const props = {
@@ -46,7 +22,7 @@ const props = {
   borderWidth: 0,
   debug: false,
   image: null,
-  isInteractive: true,
+  isInteractive: false,
   itemBackgroundColors: ["#F38181", "#FCE38A", "#EAFFD0", "#95E1D3"],
   itemLabelAlign: "right",
   itemLabelBaselineOffset: 0,
@@ -69,7 +45,7 @@ const props = {
   onRest() {
     console.log("Wheel stopped spinning");
     console.log("Selected item:", wheel);
-    let x = 12 - ((Math.floor(wheel._rotation / 30 - 3) % 12) % 12);
+    let x = 12 - ((Math.floor(wheel._rotation / 30) % 12) % 12);
     let y = (x % 12) - 1;
     console.log(food[y].label);
   },
@@ -80,3 +56,12 @@ const container = document.querySelector(".wheel-container");
 
 // 3. Create the wheel in the container and initialise it with the props:
 const wheel = new Wheel(container, props);
+
+async function test() {
+  const winningItemIndex = Math.floor(Math.random() * food.length);
+  const duration = 4000;
+  wheel.spinToItem(winningItemIndex, duration, true, 2, 1);
+}
+
+// Add event listener to the button
+document.getElementById("spinButton").addEventListener("click", test);

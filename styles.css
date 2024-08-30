@@ -1,28 +1,43 @@
 body {
-  background-image: url("./assets/maritimeBackground.png");
-  margin: 0;
-}
-
-.wheel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: aqua !important;
 }
 
 .stopper {
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 10px;
-  background-color: #f00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
+  width: 10px;
+  height: 30px;
+  background-color: red;
+}
+
+#spinButton {
+  width: 200px;
+  height: 50px;
+  font-size: 30px;
+  color: #ffffff;
+  background: #f38181;
+  border: none;
+  border-radius: 24px;
+  font-family: cursive;
+  transition: all 0.25s ease;
+}
+#spinButton:hover {
+  color: #ffffff;
+  background: #fce38a;
+  box-shadow: 0px 0px 15px 0.5px #fce38a;
+  border-color: #ffffff;
+}
+
+#seaHorse {
+  animation: upAndDown 2s infinite;
+}
+
+@keyframes upAndDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
