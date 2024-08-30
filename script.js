@@ -1,7 +1,5 @@
 import { Wheel } from "https://cdn.jsdelivr.net/npm/spin-wheel@5.0.1/dist/spin-wheel-esm.js";
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
 // 1. Configure the wheel's properties:
 const food = [
   { label: "Pommes 🍟" },
@@ -45,11 +43,8 @@ const props = {
   rotationResistance: -100,
   rotationSpeedMax: 1000,
   onRest() {
-    console.log("Wheel stopped spinning");
-    console.log("Selected item:", wheel);
-    let x = 12 - ((Math.floor(wheel._rotation / 30) % 12) % 12);
-    let y = (x % 12) - 1;
-    console.log(food[y].label);
+    const x = 12 - ((Math.floor(wheel._rotation / 30) % 12) % 12);
+    const y = (x % 12) - 1;
     alert("Chob: " + food[y].label);
   },
 };
@@ -67,10 +62,30 @@ async function spinWheel() {
 }
 
 document.getElementById("spinButton").addEventListener("click", spinWheel);
+// Function to create and animate sea horses
+function createSeaHorses() {
+  const seaHorseContainer = document.getElementById("seaHorseContainer");
 
-// only show sea horse on mobile
-console.log(isMobile);
+  for (let row = -2; row < 8; row++) {
+    for (let col = 1; col < 10; col++) {
+      const seaHorse = document.createElement("div");
+      seaHorse.classList.add("seaHorse");
+      seaHorse.style.top = `${row * 150}px`;
+      seaHorse.style.right = `${col * randomIntFromInterval(300, 400)}px`;
+      const img = document.createElement("img");
+      img.src = "assets/seahorse.svg";
+      img.alt = "Flying Horse";
 
-if (!isMobile) {
-  document.getElementById("seaHorse").style.display = "block";
+      seaHorse.appendChild(img);
+      seaHorseContainer.appendChild(seaHorse);
+    }
+  }
 }
+
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Call the function to create sea horses
+createSeaHorses();
