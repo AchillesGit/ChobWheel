@@ -1,0 +1,28 @@
+body {
+  background-image: url("./assets/maritimeBackground.png");
+  margin: 0;
+}
+
+.wheel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.stopper {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 10px;
+  background-color: #f00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
